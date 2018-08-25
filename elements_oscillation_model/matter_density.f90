@@ -12,8 +12,7 @@ real(8) function matterDensity(nu,Ne)
     real(8) :: Ne                 ! Ne is the electron density
     real(8), parameter :: GF=1.16637d-5      ! Fermi constant [GeV^(-2)]
     real(8), parameter :: SQRT2=1.414213562d0! SQRT is the value of square of 2    
-    integer ::
-
+    
     matterDensity=0.0d0
     select case(nu)
         case(1)

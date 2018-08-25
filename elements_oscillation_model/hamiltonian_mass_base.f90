@@ -16,7 +16,7 @@ subroutine hamiltonian_mass(Hm,nu,Ne)
     real(8) :: Ne                 ! Ne is the electron density
     
 
-    E1=1.0d0; E2=1.0d0; E3=1.0d0; A=matterDensity(nu,Ne)
+    E1=10.0d0; E2=1.0d0; E3=100.0d0; A=matterDensity(nu,Ne)
 
     Hm(1,1)=E1+A;  Hm(1,2)=0.0d0; Hm(1,3)=0.0d0
     Hm(2,1)=0.0d0; Hm(2,2)=E2;    Hm(2,3)=0.0d0
