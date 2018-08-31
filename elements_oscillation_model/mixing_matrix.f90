@@ -1,6 +1,13 @@
+!################################################
+!
+!   mixingMatrix: is a subroutine that load
+!       the mixing matrix of the model of
+!       neutrino oscillation
+!
+!################################################
 subroutine mixingMatrix(U,t12,t23,t13,delta)
     implicit none
-    real(8) :: U(3,3)             ! U is the mixing matrix of the oscillation model
+    double complex :: U(3,3)      ! U is the mixing matrix of the oscillation model
     real(8) :: t12,t23,t13        ! Are the mixing angles of hte oscillation model
     real(8) :: delta              ! delta is the phase factor for CP violations
 
@@ -14,8 +21,9 @@ subroutine mixingMatrix(U,t12,t23,t13,delta)
     arg=cmplx(0.0,-delta)
     exp_delta=exp(arg)
 
-    U(1,1)=c13*c12;                            U(1,2)=c13*s12;                        U(1,3)=s13*exp(cmplx(0.0d0,-delta))
+    U(1,1)=c13*c12;     U(1,2)=c13*s12;                        U(1,3)=s13*exp(cmplx(0.0d0,-delta))    
     U(2,1)=-s12*c23-c12*s23*s13*exp(cmplx(0.0d0,delta)); U(2,2)=c12*c23-s12*s23*s13*exp(cmplx(0.0d0,delta));  U(2,3)=s23*c13
-    U(3,1)=s12*s23-c12*c23*s13*exp(cmplx(0.0d0,delta));  U(3,2)=-c12*s23-s12*c23*s13*exp(cmplx(0.0d0,delta)); U(3,3)=c23*c13    
+    U(3,1)=s12*s23-c12*c23*s13*exp(cmplx(0.0d0,delta));  U(3,2)=-c12*s23-s12*c23*s13*exp(cmplx(0.0d0,delta)); U(3,3)=c23*c13
+    print*,'U(3,1)', U(3,1)
     return
 end subroutine mixingMatrix
