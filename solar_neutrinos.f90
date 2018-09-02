@@ -9,7 +9,9 @@ program solar_neutrino
     real(8) :: t12,t23,t13,delta
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
     real(8) :: Ne                 ! Ne is the electron density
-    real(8) :: T(3,3)
+    real(8) :: T1(3,3)
+    real(8) :: T2(3,3)
+    real(8) :: T3(3,3)
     
     t12=PI/4.0d0
     t23=PI/4.0d0
@@ -20,11 +22,5 @@ program solar_neutrino
     call mixingMatrix(U,t12,t23,t13,delta)
 
     call inverseMixingMatrix(U_1,t12,t23,t13,delta)
-
-    !print*, U(1,1)
-    
-    !nu=1
-    !Ne=0.0d0
-    !call tMatrix(T,nu,Ne)
 
 end program solar_neutrino
