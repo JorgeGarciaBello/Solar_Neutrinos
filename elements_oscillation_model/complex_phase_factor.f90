@@ -6,7 +6,7 @@
 !       in matter
 !
 !################################################
-real(8) function complexPhaseFactor(t12,t23,t13,delta,m1,m2,m3,L,P,nu,Ne)
+double complex function complexPhaseFactor(t12,t23,t13,delta,m1,m2,m3,L,P,nu,Ne)
     implicit none
     real(8) :: t12,t23,t13,delta  ! Are the three mixing angles and the CP-violation phase of the mixing matrix
     real(8) :: m1,m2,m3           ! m1,m2,m3 are the masses of the mass-eogenstates

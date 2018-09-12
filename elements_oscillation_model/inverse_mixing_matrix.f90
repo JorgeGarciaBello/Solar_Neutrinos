@@ -18,9 +18,7 @@ subroutine inverseMixingMatrix(U_1,t12,t23,t13,delta)
     s12=sin(t12); s23=sin(t23); s13=sin(t13)
     c12=cos(t12); c23=cos(t23); c13=cos(t13)
 
-    arg=cmplx(0.0,-delta)
-    exp_delta=exp(arg)
-
+    
     U_1(1,1)=c13*c12;                            U_1(2,1)=c13*s12;                        U_1(3,1)=s13*exp(cmplx(0.0d0,-delta))
     U_1(1,2)=-s12*c23-c12*s23*s13*exp(cmplx(0.0d0,delta)); U_1(2,2)=c12*c23-s12*s23*s13*exp(cmplx(0.0d0,delta));  U_1(3,2)=s23*c13
     U_1(1,3)=s12*s23-c12*c23*s13*exp(cmplx(0.0d0,delta));  U_1(2,3)=-c12*s23-s12*c23*s13*exp(cmplx(0.0d0,delta)); U_1(3,3)=c23*c13    

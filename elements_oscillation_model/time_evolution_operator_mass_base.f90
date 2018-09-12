@@ -7,7 +7,7 @@
 !################################################
 subroutine timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
     implicit none
-    real(8) :: UmL(3,3)           ! UmL is the time evolution operator matrix in the mass base
+    double complex :: UmL(3,3)    ! UmL is the time evolution operator matrix in the mass base
     real(8) :: L                  ! L is the length between the source of neutrinos an the position
 
     real(8) :: complexPhaseFactor ! is the function that return the value of the complex fase factor phi of the model
