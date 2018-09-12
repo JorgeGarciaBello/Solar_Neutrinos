@@ -16,7 +16,7 @@ subroutine timeEvolutionOperatorFlavourBase(UfL,L,t12,t23,t13,delta,m1,m2,m3,P,n
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino    
     real(8) :: Ne                 ! Ne is the electron density
 
-    real(8) :: UmL(3,3)           ! UmL is the time evolution operator matrix in the mass base
+    double complex :: UmL(3,3)           ! UmL is the time evolution operator matrix in the mass base
     double complex :: U(3,3)      ! U is the mixing matrix of the oscillation model
     double complex :: U_1(3,3)    ! U is the mixing matrix of the oscillation model    
 

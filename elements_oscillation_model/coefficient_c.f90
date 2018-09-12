@@ -1,7 +1,7 @@
-real(8) function coefficientC(Ci,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+double complex function coefficientC(Ci,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
     implicit none
     integer :: Ci                 ! Ci is the number of coeffienct C of the characteristic polynomial of matrix T 
-    real(8) :: T(3,3)             ! T is a traceless matrix from the model
+    double complex :: T(3,3)             ! T is a traceless matrix from the model
     real(8) :: t12,t23,t13,delta  ! Are the three mixing angles and the CP-violation phase of the mixing matrix
     real(8) :: m1,m2,m3           ! m1,m2,m3 are the masses of the mass-eogenstates
     real(8) :: P                  ! P es el momento del neutrino

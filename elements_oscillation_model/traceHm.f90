@@ -12,7 +12,7 @@ real(8) function traceHm(t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino    
     real(8) :: Ne                 ! Ne is the electron density
 
-    real(8) :: t_Hm(3,3)          ! t_Hm is the sum of Hamiltonian in vacumm (mass base)  and the potental in the base of mass
+    double complex :: t_Hm(3,3)          ! t_Hm is the sum of Hamiltonian in vacumm (mass base)  and the potental in the base of mass
     
     traceHm=0.0D0
 

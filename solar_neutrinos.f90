@@ -19,8 +19,12 @@ program solar_neutrino
     double complex :: UmL(3,3)    ! UmL is the time evolution operator matrix in the mass base
     double complex :: Vm(3,3)     ! Vm is the potential matrix in mass base
     double complex :: t_Hm(3,3)   ! t_Hm is the sum of Hamiltonian in vacumm (mass base)  and the potental in the base of mass
+    double complex :: T(3,3)      ! T is a traceless matrix from the model
+    double complex :: probabilityAmplitude
+    double complex :: probabilityOfTransitionAB
+    double complex :: result,result2
 
-    
+    L=30.0E3
     t12=PI/4.0d0!0.0D0!PI/3.0d0
     t23=PI/4.0d0!0.0D0!PI/3.0d0
     t13=PI/4.0d0!0.0D0!PI/3.0d0
@@ -31,16 +35,30 @@ program solar_neutrino
     P=1.0E6
     nu=2.0E0
     Ne=1.98E+2
-    L=30.0E3
-   
 
-    call totalHamiltonianMassBase(t_Hm,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    !print*, complexPhaseFactor(t12,t23,t13,delta,m1,m2,m3,L,P,nu,Ne)
-    print*,'t_Hm'
-    print*,t_Hm(1,:)
-    print*,t_Hm(2,:)
-    print*,t_Hm(3,:)
+    result2 =probabilityOfTransitionAB(1,3,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)       
+    result = probabilityAmplitude(1,3,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+
+    print*, result
+    print*, result2
+    
+    !call timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+    !print*,'UmL'
+    
+    !print*,UmL(1,:)
+    !print*,UmL(2,:)
+    !print*,UmL(3,:)
+
+
     !print*, '**************'
+
+
+    !call timeEvolutionOperatorFlavourBase(UfL,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+    !print*,'UfL'
+    
+    !print*,UfL(1,:)
+    !print*,UfL(2,:)
+    !print*,UfL(3,:)
 
     !print*,U_1(1,:)
     !print*,U_1(2,:)

@@ -6,7 +6,7 @@
 !################################################
 subroutine identityMatrix(I)
     implicit none
-    real(8) :: I(3,3)             ! I is the identity matrix
+    double complex :: I(3,3)             ! I is the identity matrix
 
     I(1,1)=1.0d0; I(1,2)=0.0d0; I(1,3)=0.0d0;
     I(2,1)=0.0d0; I(2,2)=1.0d0; I(2,3)=0.0d0;
