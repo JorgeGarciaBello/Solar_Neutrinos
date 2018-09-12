@@ -2,7 +2,7 @@ program solar_neutrino
     implicit none
     real(8), parameter :: PI=3.141592653589793238462643d0
     real(8) :: val1, val2
-    integer :: i,j,k
+    integer :: j,k
     double complex :: a,b
     double complex :: U(3,3)
     double complex :: U_1(3,3)
@@ -14,6 +14,7 @@ program solar_neutrino
     real(8) :: complexPhaseFactor
     double complex :: coefficientLambda
     real(8) :: L
+    real(8) :: I(3,3)
     
     t12=PI/6.0d0!0.0D0!PI/3.0d0
     t23=PI/3.0d0!0.0D0!PI/3.0d0
@@ -28,8 +29,12 @@ program solar_neutrino
     L=30.0E3
     
 
-    print*,coefficientLambda(1,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    print*,coefficientLambda(2,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    print*,coefficientLambda(3,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+
+    !call identityMatrix(I)
+
+    !print*, complex(sin(PI/4.0D0),cos(PI/4.0d0))*I
+!    print*,coefficientLambda(1,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+ !   print*,coefficientLambda(2,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+  !  print*,coefficientLambda(3,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
 
    end program solar_neutrino
