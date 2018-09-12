@@ -15,16 +15,16 @@ program solar_neutrino
     double complex :: coefficientLambda
     real(8) :: L
     
-    t12=PI/2.0d0
-    t23=PI/3.0d0
-    t13=PI/4.0d0
+    t12=PI/6.0d0!0.0D0!PI/3.0d0
+    t23=PI/3.0d0!0.0D0!PI/3.0d0
+    t13=PI/3.0d0!0.0D0!PI/3.0d0
     delta=0.0d0
     m1=(PI/2.0d0)*1.0E-3
     m2=(PI/3.0d0)*1.0E-3
     m3=(PI/4.0d0)*1.0E-3    
     P=1.0E6
     nu=2.0E0
-    Ne=1.98E+20
+    Ne=1.98E+5
     L=30.0E3
     
 
