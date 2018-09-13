@@ -1,8 +1,8 @@
-double complex function coefficientLambda(Li,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+double complex function coefficientLambda(Li,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     implicit none
     integer :: Li                 ! Li is the number of coefficient lambda
     real(8) :: t12,t23,t13,delta  ! Are the three mixing angles and the CP-violation phase of the mixing matrix
-    real(8) :: m1,m2,m3           ! m1,m2,m3 are the masses of the mass-eogenstates
+    real(8) :: sm,aM              ! sm,aM are the squared mass difference m=m_21 y M=m_32
     real(8) :: P                  ! P es el momento del neutrino
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino    
     real(8) :: Ne                 ! Ne is the electron density
@@ -16,12 +16,12 @@ double complex function coefficientLambda(Li,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
     integer :: form
     real(8) :: v13,v427           ! are the variables with 1/3 and 4/27
 
-    s1=coefficientS(1,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    s2=coefficientS(2,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+    s1=coefficientS(1,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+    s2=coefficientS(2,t12,t23,t13,delta,sm,aM,P,nu,Ne)
 
-    c0=coefficientC(0,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    c1=coefficientC(1,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    c2=coefficientC(2,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
+    c0=coefficientC(0,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+    c1=coefficientC(1,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+    c2=coefficientC(2,t12,t23,t13,delta,sm,aM,P,nu,Ne)
 
     v13=(1.0d0/3.0d0)
     v427=(4.0d0/27.0d0)
