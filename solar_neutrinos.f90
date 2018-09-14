@@ -22,44 +22,74 @@ program solar_neutrino
     double complex :: T(3,3)      ! T is a traceless matrix from the model
     double complex :: probabilityAmplitude
     double complex :: probabilityOfTransitionAB
-    double complex :: result,result2
+    double complex :: Ls(3)       ! Ls is an array with the values of coefficients lambda    
+    double complex :: result,result2,r1,r2,r3
+    real(8) :: matterDensity
+    real(8) :: jump
+    real(8) :: eta,rEarth
+    double complex :: MA(3,3), MB(3,3)
+    double complex :: vectE(3)
+    double complex :: lambdaMtrx(3,3)! lambdaMtrx is the matrix of the model
+    double complex :: vectA(3)    ! vectA is the vector of the model
 
-    L=30.0E3
-    t12=PI/4.0d0!0.0D0!PI/3.0d0
-    t23=PI/4.0d0!0.0D0!PI/3.0d0
-    t13=PI/4.0d0!0.0D0!PI/3.0d0
-    delta=3.0d0
-    sm=(PI/2.5d0)*1.0E-3
-    aM=(PI/3.5d0)*1.0E-3    
-    P=1.0E6
-    nu=1
-    Ne=1.98E+2
-
-    result2 =probabilityOfTransitionAB(1,3,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)       
-    result = probabilityAmplitude(1,3,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-
-    print*, result
-    print*, result2
     
-    !call timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    !print*,'UmL'
+    t12=PI/4.0d0         ! equiv to 45 degrees
+    t23=PI/4.0d0         ! equiv to 45 degrees
+    t13=PI*0.027777778d0 ! equiv to 5 degrees
+    delta=2.0d0
+    sm=1E-4
+    aM=1E-3
+
+    eta=0.2d0
+    rEarth=6378.d0
+    L=2.0d0*eta*rEarth
+    P=10.0d0
     
-    !print*,UmL(1,:)
-    !print*,UmL(2,:)
-    !print*,UmL(3,:)
+    nu=3
+    Ne=1.0d-15
 
+    print*, 'in main program'
+    call mixingMatrix(U,t12,t23,t13,delta)
+    call inverseMixingMatrix(U_1,t12,t23,t13,delta)
+    print*,U(1,:)
+    print*,U(2,:)
+    print*,U(3,:)
+    print*,'***********'
+    print*,U_1(1,:)
+    print*,U_1(2,:)
+    print*,U_1(3,:)
+    print*,'***********'
+    print*, matmul(U,U_1)
+    !jump=(10.0d-14 -Ne)/(10000.0d0)    
+    !print*,(6.5821128d-22*299729458)**2
+   
 
-    !print*, '**************'
+    !open(22,file='results/lamdasDiff12.dat')
+    !open(23,file='results/lamdasDiff23.dat')
+    !open(24,file='results/lamdasDiff13.dat')
+    !do k=1,10000
+    !    Ne = Ne + jump
+    !    write(22,*) Ne,ABS(real(coefficientLambda(1,t12,t23,t13,delta,sm,aM,P,nu,Ne)  &
+    !                           -coefficientLambda(2,t12,t23,t13,delta,sm,aM,P,nu,Ne)))
+    !    write(23,*) Ne,ABS(real(coefficientLambda(2,t12,t23,t13,delta,sm,aM,P,nu,Ne)  &
+    !                           -coefficientLambda(3,t12,t23,t13,delta,sm,aM,P,nu,Ne)))
+    !    write(24,*) Ne,ABS(real(coefficientLambda(1,t12,t23,t13,delta,sm,aM,P,nu,Ne)  &
+    !                           -coefficientLambda(3,t12,t23,t13,delta,sm,aM,P,nu,Ne)))
+        !print*,k
+    !enddo
+    !close(22)
+    !close(23)
+    !close(24)
 
+    !jump=(1.0d-12 -Ne)/(10000.0d0)    
 
-    !call timeEvolutionOperatorFlavourBase(UfL,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
-    !print*,'UfL'
+    !open(21,file='results/probabilityChartwithCHangeofunidades2.dat')
+    !do k=1,10000
+    !    Ne = Ne + jump
+    !    write(21,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
+    !    print*,k
+    !enddo
+    !close(21)  
     
-    !print*,UfL(1,:)
-    !print*,UfL(2,:)
-    !print*,UfL(3,:)
-
-    !print*,U_1(1,:)
-    !print*,U_1(2,:)
-    !print*,U_1(3,:)
+    
    end program solar_neutrino

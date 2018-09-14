@@ -12,6 +12,8 @@ double complex function probabilityOfTransitionAB(flvr1,flvr2,L,t12,t23,t13,delt
     double complex :: probabilityAmplitude
 
     probabilityOfTransitionAB = 0.0d0
+    print*,'Amplitud',probabilityAmplitude(flvr1,flvr2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+    print*,'Amplitud conjugada',CONJG(probabilityAmplitude(flvr1,flvr2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     probabilityOfTransitionAB = probabilityAmplitude(flvr1,flvr2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)*        &
                                 CONJG(probabilityAmplitude(flvr1,flvr2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     return

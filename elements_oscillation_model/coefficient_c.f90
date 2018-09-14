@@ -11,7 +11,9 @@ double complex function coefficientC(Ci,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     select case(Ci)
         case(0)
             call tMatrix(T,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-            coefficientC = -(   T(1,1)+T(2,2)+T(3,3)  )
+            coefficientC = -(   T(1,1)*T(2,2)*T(3,3) - T(3,1)*T(2,2)*T(1,3)   &
+                               +T(2,1)*T(3,2)*T(1,3) - T(2,1)*T(1,2)*T(3,3)   &
+                               +T(3,1)*T(1,2)*T(2,3) - T(1,1)*T(3,2)*T(2,3)  )
         case(1)
             call tMatrix(T,t12,t23,t13,delta,sm,aM,P,nu,Ne)
             coefficientC =  T(1,1)*T(2,2)-T(1,2)*T(2,1) &
