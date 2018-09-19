@@ -15,8 +15,11 @@ double complex function complexPhaseFactor(t12,t23,t13,delta,sm,aM,L,P,nu,Ne)
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino    
     real(8) :: Ne                 ! Ne is the electron density
 
-    real(8) :: traceHm            ! traceHm is the trace of total Hamiltonian-mass   
+    double complex :: traceHm     ! traceHm is the trace of total Hamiltonian-mass   
     
-    complexPhaseFactor=exp(  cmplx( 0.0,-L*traceHm(t12,t23,t13,delta,sm,aM,P,nu,Ne)/3.0d0 )  )
+    complexPhaseFactor=exp(  cmplx( 0.0d0,-L)                          &
+                             *traceHm(t12,t23,t13,delta,sm,aM,P,nu,Ne) &
+                             /3.0d0                                    &
+                          )
     return
 end function complexPhaseFactor

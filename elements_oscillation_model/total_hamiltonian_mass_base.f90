@@ -18,14 +18,9 @@ subroutine totalHamiltonianMassBase(t_Hm,t12,t23,t13,delta,sm,aM,P,nu,Ne)
 
     double complex :: Hv(3,3)            ! Hv is the hamiltonian for the propagation of the neutrinos in vacuum
     double complex :: Vm(3,3)            ! Vm is the potential matrix in mass base
-    double complex :: U(3,3)      ! U is the mixing matrix of the oscillation model    
-    double complex :: U_1(3,3)    ! U is the mixing matrix of the oscillation model    
-    
-    
-    
 
     call hamiltonianInVacuum(Hv,sm,aM,P)
-    call potentialMatrixMassBase(Vm,U,U_1,t12,t23,t13,delta,nu,Ne)
+    call potentialMatrixMassBase(Vm,t12,t23,t13,delta,nu,Ne)
 
     t_Hm=Hv+Vm
     return

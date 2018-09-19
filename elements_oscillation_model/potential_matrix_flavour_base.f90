@@ -15,9 +15,9 @@ subroutine potentialMatrixFlavourBase(Vf,nu,Ne)
 
     A=matterDensity(nu,Ne)
 
-    Vf(1,1)=cmplx(A,0.0d0);     Vf(1,2)=0.0d0; Vf(1,3)=0.0d0
-    Vf(2,1)=0.0d0; Vf(2,2)=0.0d0; Vf(2,3)=0.0d0
-    Vf(3,1)=0.0d0; Vf(3,2)=0.0d0; Vf(3,3)=0.0d0
+    Vf(1,1)=cmplx(A,0.0d0); Vf(1,2)=0.0d0; Vf(1,3)=0.0d0
+    Vf(2,1)=0.0d0;          Vf(2,2)=0.0d0; Vf(2,3)=0.0d0
+    Vf(3,1)=0.0d0;          Vf(3,2)=0.0d0; Vf(3,3)=0.0d0
 
     return
 end subroutine potentialMatrixFlavourBase

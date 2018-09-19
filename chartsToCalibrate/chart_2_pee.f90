@@ -1,4 +1,4 @@
-subroutine chart1Pee()
+subroutine chart2Pee()
     implicit none
     real(8), parameter :: PI=3.141592653589793238462643d0
     real(8) :: t12,t23,t13,delta
@@ -21,19 +21,19 @@ subroutine chart1Pee()
     sm=1E-4
     aM=1E-3
     P=10.0d0
-    eta=0.20d0
+    eta=1.0d0
     rEarth=6378.d0
     L=2.0d0*eta*rEarth    
     nu=3
     Ne=1.0d-15
 
     jump=(1.0d-12 -Ne)/(10000.0d0)
-    print*,'Chart1Pee'
-    open(26,file='results/chart1Pee.dat')
+    print*,'Chart2Pee'
+    open(27,file='results/chart2Pee.dat')
     do k=1,10000
         Ne = Ne + jump
-        write(26,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))        
+        write(27,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     enddo
-    close(26)
+    close(27)
     return
-end subroutine chart1Pee
+end subroutine chart2Pee
