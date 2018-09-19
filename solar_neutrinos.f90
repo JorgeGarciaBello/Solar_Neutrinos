@@ -41,6 +41,10 @@ program solar_neutrino
 
     print*, result
     print*, result2
+
+    print*,'*******************'
+
+    call chart1Pee()
     
     !call timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,m1,m2,m3,P,nu,Ne)
     !print*,'UmL'

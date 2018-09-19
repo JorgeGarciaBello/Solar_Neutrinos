@@ -13,13 +13,18 @@ real(8) function matterDensity(nu,Ne)
     real(8), parameter :: GF=1.16637d-5      ! Fermi constant [GeV^(-2)]
     real(8), parameter :: SQRT2=1.414213562d0! SQRT is the value of square of 2    
     
+
     matterDensity=0.0d0
     select case(nu)
         case(1)
             matterDensity=SQRT2*GF*Ne
         case(2)
             matterDensity=-SQRT2*GF*Ne
+        case(3)
+            matterDensity=Ne            
         case default
+        print*, nu
+        stop
             print*, 'Error: no existe la opcion-matterDensity=0.0'
     end select
 end function matterDensity
