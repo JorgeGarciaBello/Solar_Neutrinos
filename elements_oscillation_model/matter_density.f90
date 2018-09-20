@@ -22,7 +22,7 @@ real(8) function matterDensity(nu,Ne)
         case(2)
             matterDensity=-SQRT2*GF*Ne
         case(3)
-            matterDensity=Ne
+            matterDensity=5.067731d9*Ne
         case default
         print*, nu
         stop

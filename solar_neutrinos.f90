@@ -51,6 +51,6 @@ program solar_neutrino
     nu=3
     Ne=1.0d-15
 
-    call proofOfOneness()
+    call chartsPee()
     
    end program solar_neutrino

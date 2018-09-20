@@ -8,8 +8,7 @@ subroutine chartPem()
     real(8) :: L                  ! L is the length between the source of neutrinos an the position
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
     real(8) :: Ne                 ! Ne is the electron density
-    real(8),parameter :: scalaFactor=2.5399811853d10! scalaFactor is the scala factor to obtein length in [eV^{-1}]
-
+    
     double complex :: probabilityOfTransitionAB    
     real(8) :: matterDensity
     real(8) :: jump
@@ -21,19 +20,19 @@ subroutine chartPem()
     delta=0.0d0
     sm=1E-4
     aM=1E-3
-    P=10.0d9             ! Energía en [eV]
-    eta=1.0d0
+    P=10.0d0             ! Energía en [GeV]
+    eta=5.0d0
     rEarth=6378.d0       ! Longitud en [Km]
-    L=2.0d0*eta*rEarth*scalaFactor
+    L=2.0d0*eta*rEarth
     nu=3
     Ne=1.0d-15
 
     jump=(1.0d-12 -Ne)/(10000.0d0)
     print*,'ChartPem'
-    open(29,file='results/chartPem.dat')
+    open(29,file='results/newchartPem.dat')
     do k=1,10000
         Ne = Ne + jump
-        write(29,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
+        write(29,*) Ne, real(probabilityOfTransitionAB(1,2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     enddo
     close(29)
     return

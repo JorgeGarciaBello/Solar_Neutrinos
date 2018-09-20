@@ -29,11 +29,11 @@ subroutine proofOfOneness()
     Ne=1.0d-15
 
     do i=1,100
-        P=P+1.0d9
-        !L=L+10
-        Pee = probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-        Pem = probabilityOfTransitionAB(1,2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-        Pet = probabilityOfTransitionAB(1,3,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)    
+        !P=P+1.0d9
+        L=L+10
+        Pee = probabilityOfTransitionAB(3,2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+        Pem = probabilityOfTransitionAB(3,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+        Pet = probabilityOfTransitionAB(3,3,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)    
         result = Pee+Pem+Pet
         !print*, Pee, Pem, Pet
         print*, result
