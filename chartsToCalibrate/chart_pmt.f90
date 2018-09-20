@@ -28,10 +28,10 @@ subroutine chartPmt()
     nu=3
     Ne=1.0d-15
 
-    jump=(1.0d-12 -Ne)/(10000.0d0)
+    jump=(1.0d-12 -Ne)/(100000.0d0)
     print*,'ChartPmt'
-    open(31,file='results/chartPmt.dat')
-    do k=1,10000
+    open(31,file='results/_chartPmt.dat')
+    do k=1,100000
         Ne = Ne + jump
         write(31,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(2,3,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     enddo

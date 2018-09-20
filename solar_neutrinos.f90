@@ -44,100 +44,13 @@ program solar_neutrino
     delta=0.00000000d0
     sm=1E-4
     aM=1E-3
-
     eta=0.2d0
     rEarth=6378.d0
     L=2.0d0*eta*rEarth
-    P=10.0d0
-    
+    P=10.0d9    
     nu=3
     Ne=1.0d-15
-    
-    !print*, 'eigenvalues lambda: '
-    !call lambdaFromEISPACK(Ls,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    !print*, Ls(1)
-    !print*, Ls(2)
-    !print*, Ls(3)
 
-    !print*, 'vectE:'
-    !call vectorE(vectE,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    !print*,vectE(1)
-    !print*,vectE(2)
-    !print*,vectE(3)
-    !PRINT*,'lambda MATRIX: '
-    !CALL lambdaMatrix(lambdaMtrx,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    !PRINT*,lambdaMtrx(1,:)
-    !PRINT*,lambdaMtrx(2,:)
-    !PRINT*,lambdaMtrx(3,:)
-    !PRINT*,'inverse lambda MATRIX:'
-    !call inverseMatrix(lambdaMtrx,inverseLambdaMtrx)
-    !PRINT*,inverseLambdaMtrx(1,:)
-    !PRINT*,inverseLambdaMtrx(2,:)
-    !PRINT*,inverseLambdaMtrx(3,:)
-
-
-    !PRINT*, 'PRODUCTO LAMDA LAMDA INVERSA:'
-    !U=matmul(inverseLambdaMtrx,lambdaMtrx)
-    !print*,U(1,:)
-    !print*,U(2,:)
-    !print*,U(3,:)
-    !PRINT*, 'vector A:'
-    !call vectorA(vectA,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    !print*,vectA(1)
-    !print*,vectA(2)
-    !print*,vectA(3)   
-
-    
-    !PRINT*, 'Fase global phi:'
-    !print*, complexPhaseFactor(t12,t23,t13,delta,sm,aM,L,P,nu,Ne)
-
-    !pRINT*, 'OPERADOR D EEVOLUCION TEMPORAL EN BASE DE MASAS:'
-    !call timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    !print*,UmL(1,:)
-    !print*,UmL(2,:)
-    !print*,UmL(3,:)
-
-
-    !call totalHamiltonianMassBase(t_Hm,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    !print*,'******total_hamiltonian'
-    !print*,t_Hm(1,:)
-    !print*,t_Hm(2,:)
-    !print*,t_Hm(3,:)
-    !call chartsPee()
-    !call chartPem()
-    !call chartPet()
-    !call chartPmt()
-    call chart1Pee()
-    !jump=(10.0d-14 -Ne)/(10000.0d0)    
-    !print*,(6.5821128d-22*299729458)**2
-   
-
-    !open(22,file='results/lamdasDiff12.dat')
-    !open(23,file='results/lamdasDiff23.dat')
-    !open(24,file='results/lamdasDiff13.dat')
-    !do k=1,10000
-    !    Ne = Ne + jump
-    !    write(22,*) Ne,ABS(real(coefficientLambda(1,t12,t23,t13,delta,sm,aM,P,nu,Ne)  &
-    !                           -coefficientLambda(2,t12,t23,t13,delta,sm,aM,P,nu,Ne)))
-    !    write(23,*) Ne,ABS(real(coefficientLambda(2,t12,t23,t13,delta,sm,aM,P,nu,Ne)  &
-    !                           -coefficientLambda(3,t12,t23,t13,delta,sm,aM,P,nu,Ne)))
-    !    write(24,*) Ne,ABS(real(coefficientLambda(1,t12,t23,t13,delta,sm,aM,P,nu,Ne)  &
-    !                           -coefficientLambda(3,t12,t23,t13,delta,sm,aM,P,nu,Ne)))
-        !print*,k
-    !enddo
-    !close(22)
-    !close(23)
-    !close(24)
-
-    !jump=(1.0d-12 -Ne)/(10000.0d0)    
-
-    !open(21,file='results/probabilityChartwithCHangeofunidades2.dat')
-    !do k=1,10000
-    !    Ne = Ne + jump
-    !    write(21,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
-    !    print*,k
-    !enddo
-    !close(21)  
-    
+    call proofOfOneness()
     
    end program solar_neutrino
