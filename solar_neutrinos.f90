@@ -101,6 +101,10 @@ program solar_neutrino
     !print*,t_Hm(1,:)
     !print*,t_Hm(2,:)
     !print*,t_Hm(3,:)
+    !call chartsPee()
+    !call chartPem()
+    !call chartPet()
+    !call chartPmt()
     call chart1Pee()
     !jump=(10.0d-14 -Ne)/(10000.0d0)    
     !print*,(6.5821128d-22*299729458)**2

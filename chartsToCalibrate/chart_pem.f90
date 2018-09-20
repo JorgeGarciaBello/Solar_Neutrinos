@@ -1,4 +1,4 @@
-subroutine chart2Pee()
+subroutine chartPem()
     implicit none
     real(8), parameter :: PI=3.141592653589793238462643d0
     real(8) :: t12,t23,t13,delta
@@ -23,18 +23,18 @@ subroutine chart2Pee()
     aM=1E-3
     P=10.0d9             ! Energía en [eV]
     eta=1.0d0
-    rEarth=6378.d0
-    L=2.0d0*eta*rEarth*scalaFactor 
+    rEarth=6378.d0       ! Longitud en [Km]
+    L=2.0d0*eta*rEarth*scalaFactor
     nu=3
     Ne=1.0d-15
 
     jump=(1.0d-12 -Ne)/(10000.0d0)
-    print*,'Chart2Pee'
-    open(27,file='results/chart2Pee.dat')
+    print*,'ChartPem'
+    open(29,file='results/chartPem.dat')
     do k=1,10000
         Ne = Ne + jump
-        write(27,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
+        write(29,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     enddo
-    close(27)
+    close(29)
     return
-end subroutine chart2Pee
+end subroutine chartPem
