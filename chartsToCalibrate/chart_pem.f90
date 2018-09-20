@@ -1,4 +1,4 @@
-subroutine chart1Pee()
+subroutine chartPem()
     implicit none
     real(8), parameter :: PI=3.141592653589793238462643d0
     real(8) :: t12,t23,t13,delta
@@ -8,7 +8,6 @@ subroutine chart1Pee()
     real(8) :: L                  ! L is the length between the source of neutrinos an the position
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
     real(8) :: Ne                 ! Ne is the electron density
-
     real(8),parameter :: scalaFactor=2.5399811853d10! scalaFactor is the scala factor to obtein length in [eV^{-1}]
 
     double complex :: probabilityOfTransitionAB    
@@ -23,19 +22,19 @@ subroutine chart1Pee()
     sm=1E-4
     aM=1E-3
     P=10.0d9             ! Energía en [eV]
-    eta=0.5d0
+    eta=1.0d0
     rEarth=6378.d0       ! Longitud en [Km]
     L=2.0d0*eta*rEarth*scalaFactor
     nu=3
     Ne=1.0d-15
 
     jump=(1.0d-12 -Ne)/(10000.0d0)
-    print*,'Chart1Pee'
-    open(26,file='results/chart1Pee.dat')
+    print*,'ChartPem'
+    open(29,file='results/chartPem.dat')
     do k=1,10000
         Ne = Ne + jump
-        write(26,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))        
+        write(29,*) matterDensity(nu,Ne), real(probabilityOfTransitionAB(1,2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))
     enddo
-    close(26)
+    close(29)
     return
-end subroutine chart1Pee
+end subroutine chartPem
