@@ -20,7 +20,7 @@ program solar_neutrino
     double complex :: t_Hm(3,3)   ! t_Hm is the sum of Hamiltonian in vacumm (mass base)  and the potental in the base of mass
     double complex :: T(3,3)      ! T is a traceless matrix from the model
     double complex :: probabilityAmplitude
-    double complex :: probabilityOfTransitionAB
+    real(8) :: probabilityOfTransitionAB
     double complex :: Ls(3)       ! Ls is an array with the values of coefficients lambda    
     double complex :: result,result2,r1,r2,r3
     real(8) :: matterDensity
@@ -51,6 +51,7 @@ program solar_neutrino
     nu=3
     Ne=1.0d-15
 
-    call chartsPee()
+    call chartPemInVaccum()
+    !call chartsPee()
     
    end program solar_neutrino

@@ -12,9 +12,9 @@ subroutine lambdaMatrix(lambdaMtrx,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     
     call lambdaFromEISPACK(Ls,t12,t23,t13,delta,sm,aM,P,nu,Ne)
 
-    lambdaMtrx(1,1)=1;  lambdaMtrx(1,2)=complex(0.d0,-L)*Ls(1);  lambdaMtrx(1,3)=-(L**2)*(Ls(1)**2);
-    lambdaMtrx(2,1)=1;  lambdaMtrx(2,2)=complex(0.d0,-L)*Ls(2);  lambdaMtrx(2,3)=-(L**2)*(Ls(2)**2);
-    lambdaMtrx(3,1)=1;  lambdaMtrx(3,2)=complex(0.d0,-L)*Ls(3);  lambdaMtrx(3,3)=-(L**2)*(Ls(3)**2);
+    lambdaMtrx(1,1)=1.0d0;  lambdaMtrx(1,2)=complex(0.d0,-L)*Ls(1);  lambdaMtrx(1,3)=-(L**2)*(Ls(1)**2);
+    lambdaMtrx(2,1)=1.0d0;  lambdaMtrx(2,2)=complex(0.d0,-L)*Ls(2);  lambdaMtrx(2,3)=-(L**2)*(Ls(2)**2);
+    lambdaMtrx(3,1)=1.0d0;  lambdaMtrx(3,2)=complex(0.d0,-L)*Ls(3);  lambdaMtrx(3,3)=-(L**2)*(Ls(3)**2);
 
     return
 end subroutine lambdaMatrix

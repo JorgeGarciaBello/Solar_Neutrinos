@@ -23,7 +23,7 @@ real(8) function matterDensity(nu,Ne)
             matterDensity=-SQRT2*GF*Ne
         case(3)
             matterDensity=5.067731d9*Ne
-        case default
+        case default            
         print*, nu
         stop
             print*, 'Error: no existe la opcion-matterDensity=0.0'

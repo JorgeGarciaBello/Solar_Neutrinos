@@ -1,4 +1,4 @@
-double complex function probabilityOfTransitionAB(flvr1,flvr2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+real(8) function probabilityOfTransitionAB(flvr1,flvr2,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     implicit none
     integer :: flvr1              ! flvr1 is the flavour with which the neutrino is generated
     integer :: flvr2              ! flvr2 is the flavour that is transited 

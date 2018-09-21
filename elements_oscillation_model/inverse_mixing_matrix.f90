@@ -17,8 +17,8 @@ subroutine inverseMixingMatrix(U_1,t12,t23,t13,delta)
 
     double complex :: U(3,3)      ! U is the mixing matrix of the oscillation model
     
-    call mixingMatrix(U,t12,t23,t13,delta)
-    call inverseMatrix(U,U_1)    
+    call mixingMatrix(U,t12,t23,t13,delta) 
+    call inverseMatrix(U,U_1)
     
     return
 end subroutine inverseMixingMatrix
