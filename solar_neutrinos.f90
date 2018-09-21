@@ -51,7 +51,7 @@ program solar_neutrino
     nu=3
     Ne=1.0d-15
 
-    call chartPemInVaccum()
+    call getDataFromModel()
     !call chartsPee()
     
    end program solar_neutrino
