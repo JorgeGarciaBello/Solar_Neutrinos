@@ -8,8 +8,9 @@ subroutine chart3Pee()
     real(8) :: L                  ! L is the length between the source of neutrinos an the position
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
     real(8) :: Ne                 ! Ne is the electron density
+    real(8) :: Ne1,Ne2            ! Ne1, Ne2 is the electron density intervals
   
-    double complex :: probabilityOfTransitionAB    
+    real(8) :: probabilityOfTransitionAB    
     real(8) :: matterDensity
     real(8) :: jump
     integer :: k
@@ -24,15 +25,16 @@ subroutine chart3Pee()
     eta=5.0d0
     rEarth=6378.d0
     L=2.0d0*eta*rEarth
-    nu=3
-    Ne=1.0d-15
+    nu=1
+    Ne1=0.789265983d22
+    Ne2=0.789265983d25
 
-    jump=(1.0d-12 -Ne)/(10000.0d0)
+    jump=(Ne2 -Ne1)/(10000.0d0)
     print*,'Chart3Pee'
-    open(28,file='results/newchart3Pee.dat')
+    open(28,file='results/chart3Pee.dat')
     do k=1,10000
-        Ne = Ne + jump
-        write(28,*) Ne, real(probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne))        
+        Ne1 = Ne1 + jump
+        write(28,*) matterDensity(nu,Ne1), probabilityOfTransitionAB(1,1,L,t12,t23,t13,delta,sm,aM,P,nu,Ne1)
     enddo
     close(28)
     return

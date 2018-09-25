@@ -51,7 +51,7 @@ program solar_neutrino
     nu=3
     Ne=1.0d-15
 
-    call getDataFromModel()
-    !call chartsPee()
+
+    print*, 'Hola'
     
    end program solar_neutrino

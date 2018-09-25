@@ -6,28 +6,24 @@
 !       an electron density Ne
 !
 !################################################
-real(8) function matterDensity(nu,Ne)
+real(8) function matterDensity(nu,Ne) ! Units [eV]
     implicit none
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
     real(8) :: Ne                 ! Ne is the electron density
-    real(8), parameter :: GF=1.16637d-5      ! Fermi constant [GeV^(-2)]
-    !real(8), parameter :: GF=8.961876064d-47 ! Fermi constant [ev m^(3)]
-    real(8), parameter :: SQRT2=1.414213562d0! SQRT is the value of square of 2    
-    
+    real(8), parameter :: sqrt2GF=7.6324D-14! Fermi constant [eV cm^{3}/N_A]
+    real(8), parameter :: N_A=6.0221415D23  ! N_A is the Avogadro's number [1/mol]
 
     matterDensity=0.0d0
     select case(nu)
         case(1)
-            matterDensity=SQRT2*GF*Ne
+            matterDensity=(sqrt2GF/N_A)*Ne
         case(2)
-            matterDensity=-SQRT2*GF*Ne
-        case(3)
-            matterDensity=5.067731d9*Ne
-        case default            
-        print*, nu
-        stop
+            matterDensity=-(sqrt2GF/N_A)*Ne        
+        case default
+            print*, nu            
             print*, 'Error: no existe la opcion-matterDensity=0.0'
             print*,'nu',nu
             print*,'Ne',Ne
+            stop
     end select
 end function matterDensity
