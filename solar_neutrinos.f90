@@ -59,10 +59,7 @@ program solar_neutrino
     nu=3
     Ne=1.0d-15
 
-    call readEnergySpectra(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm)
-
-    call readNeutrinoFractionsProducedByZone(neutrinoFractionByZone)
-
+    call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,neutrinoFractionByZone)
     print*,neutrinoFractionByZone(1,:)
     print*,''
     print*,neutrinoFractionByZone(1219,:)
