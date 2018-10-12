@@ -38,13 +38,16 @@ program solar_neutrino
     double complex :: traceHm
     double complex :: inverseLambdaMtrx(3,3)! Inverse matrix
 
-    real(8) :: B8_e_sptrm(829,2) ! Neutrino energy spectrum from Boro-8
-    real(8) :: F17_e_sptrm(500,2)! Neutrino energy spectrum from Florio-8
-    real(8) :: HEP_e_sptrm(1000,2)! Neutrino energy spectrum from HEP reaction
-    real(8) :: N13_e_sptrm(200,2)! Neutrino energy spectrum from nitrogen-13
-    real(8) :: O15_e_sptrm(500,2)! Neutrino energy spectrum from oxygen-13
-    real(8) :: PP_e_sptrm(84,2)  ! Neutrino energy spectrum from oxygen-13
+    real(8) :: B8_e_sptrm(829,2) ! Neutrino energy spectrum from Boro-8 [MeV]
+    real(8) :: F17_e_sptrm(500,2)! Neutrino energy spectrum from Florio-8 [MeV]
+    real(8) :: HEP_e_sptrm(1000,2)! Neutrino energy spectrum from HEP reaction [MeV]
+    real(8) :: N13_e_sptrm(200,2)! Neutrino energy spectrum from nitrogen-13 [MeV]
+    real(8) :: O15_e_sptrm(500,2)! Neutrino energy spectrum from oxygen-13 [MeV]
+    real(8) :: PP_e_sptrm(84,2)  ! Neutrino energy spectrum from oxygen-13 [Mev]
     real(8) :: neutrinoFractionByZone(1219,10)! is the data set for the neutrino oscillation in matter
+
+    double complex :: iterUfL(3,3)! iterUfL is the time evolution operator matrix in the flavour base iterative for diferents lengths and electron densities
+    real(8) :: a_density(1219)    ! a_density is an array with the corresponding electron densities
     
     t12=PI/4.0d0         ! equiv to 45 degrees
     t23=PI/4.0d0         ! equiv to 45 degrees
@@ -56,14 +59,15 @@ program solar_neutrino
     rEarth=6378.d0
     L=2.0d0*eta*rEarth
     P=10.0d9    
-    nu=3
+    nu=1
     Ne=1.0d-15
 
     call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,neutrinoFractionByZone)
-    print*,neutrinoFractionByZone(1,:)
-    print*,''
-    print*,neutrinoFractionByZone(1219,:)
+    a_density=neutrinoFractionByZone(:,2)
+    call iterativeTimeEvolutionOperator(iterUfL,PP_e_sptrm(1,1),neutrinoFractionByZone(1,1),t12,t23,t13,delta,sm,aM,nu,a_density)
 
-  
+    print*, iterUfL(1,:)
+    print*, iterUfL(2,:)
+    print*, iterUfL(3,:)
     
    end program solar_neutrino
