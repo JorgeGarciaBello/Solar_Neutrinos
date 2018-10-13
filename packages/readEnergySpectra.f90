@@ -9,12 +9,12 @@ subroutine readEnergySpectra(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_
     real(8) :: O15_e_sptrm(500,2)! Neutrino energy spectrum from oxygen-13 [MeV][MeV]
     real(8) :: PP_e_sptrm(84,2)  ! Neutrino energy spectrum from oxygen-13 [MeV]    
 
-    call read8BSolarNeutrinoEnergySpectrum(B8_e_sptrm)
-    call readF17SolarNeutrinoEnergySpectrum(F17_e_sptrm)
-    call readHEPSolarNeutrinoEnergySpectrum(HEP_e_sptrm)
-    call readN13SolarNeutrinoEnergySpectrum(N13_e_sptrm)
-    call readO15SolarNeutrinoEnergySpectrum(O15_e_sptrm)
-    call readPPSolarNeutrinoEnergySpectrum(PP_e_sptrm)
+    call read8BSolarNeutrinoEnergySpectrum(B8_e_sptrm)   !([MeV], #)
+    call readF17SolarNeutrinoEnergySpectrum(F17_e_sptrm) !([MeV], #)
+    call readHEPSolarNeutrinoEnergySpectrum(HEP_e_sptrm) !([MeV], #)
+    call readN13SolarNeutrinoEnergySpectrum(N13_e_sptrm) !([MeV], #)
+    call readO15SolarNeutrinoEnergySpectrum(O15_e_sptrm) !([MeV], #)
+    call readPPSolarNeutrinoEnergySpectrum(PP_e_sptrm)   !([MeV], #)
 
     return
 end subroutine readEnergySpectra

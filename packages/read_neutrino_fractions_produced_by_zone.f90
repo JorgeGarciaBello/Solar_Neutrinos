@@ -15,7 +15,7 @@ subroutine readNeutrinoFractionsProducedByZone(neutrinoFractionByZone)
     ! 9)  Fraction of pep neutrinos produced in the zone
     ! 10) Fraction of hep neutrinos produced in the zone
 
-    open(47,file='solar_model/data_for_solar_neutrino_oscillations.dat',status='old')    
+    open(47,file='solar_model/data_for_solar_neutrino_oscillations.dat',status='old')
         read(47,*) ((neutrinoFractionByZone(i,j),  j=1,10), i=1,1219)    
     close(47)
     return

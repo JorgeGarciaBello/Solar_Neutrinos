@@ -44,7 +44,16 @@ program solar_neutrino
     real(8) :: N13_e_sptrm(200,2)! Neutrino energy spectrum from nitrogen-13 [MeV]
     real(8) :: O15_e_sptrm(500,2)! Neutrino energy spectrum from oxygen-13 [MeV]
     real(8) :: PP_e_sptrm(84,2)  ! Neutrino energy spectrum from oxygen-13 [Mev]
-    real(8) :: neutrinoFractionByZone(1219,10)! is the data set for the neutrino oscillation in matter
+    real(8) :: solarRadios(1219)  ! solarRadios is an array with the radii of the different layers of the Sun [1/Solar Rdio]
+    real(8) :: logElectronDensity(1219)! Is an array with the Logarithm     
+    real(8) :: PP(1219)           ! Fraction of pp neutrinos produced in the zone 
+    real(8) :: PEP(1219)          ! Fraction of pep neutrinos produced in the zone
+    real(8) :: HEP(1219)          ! Fraction of hep neutrinos produced in the zone
+    real(8) :: Oxygen15(1219)     ! Fraction of oxygen 15 neutrinos produced in the zone
+    real(8) :: Nitrogen13(1219)   ! Fraction of nitrogen 13 neutrinos produced in the zone
+    real(8) :: Beryllium7(1219)   ! Fraction of beryllium 7 neutrinos produced in the zone
+    real(8) :: Florine17(1219)    ! Fraction of florine 17 neutrinos produced in the zone
+    real(8) :: Boron8(1219)       ! Fraction of boron 8 neutrinos produced in the zone  
 
     double complex :: iterUfL(3,3)! iterUfL is the time evolution operator matrix in the flavour base iterative for diferents lengths and electron densities
     real(8) :: a_density(1219)    ! a_density is an array with the corresponding electron densities
@@ -62,12 +71,9 @@ program solar_neutrino
     nu=1
     Ne=1.0d-15
 
-    call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,neutrinoFractionByZone)
-    a_density=neutrinoFractionByZone(:,2)
-    call iterativeTimeEvolutionOperator(iterUfL,PP_e_sptrm(1,1),neutrinoFractionByZone(1,1),t12,t23,t13,delta,sm,aM,nu,a_density)
-
-    print*, iterUfL(1,:)
-    print*, iterUfL(2,:)
-    print*, iterUfL(3,:)
+    call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,   &
+                    solarRadios,logElectronDensity,PP,PEP,HEP,Oxygen15,Nitrogen13,Beryllium7,&
+                    Florine17,Boron8)
+  
     
    end program solar_neutrino
