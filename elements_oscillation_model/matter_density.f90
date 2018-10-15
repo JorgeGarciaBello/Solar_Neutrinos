@@ -16,9 +16,12 @@ real(8) function matterDensity(nu,Ne) ! Units [eV]
     matterDensity=0.0d0
     select case(nu)
         case(1)
-            matterDensity=(sqrt2GF/N_A)*Ne
+            !matterDensity=(sqrt2GF/N_A)*Ne
+            matterDensity=(sqrt2GF)*Ne
         case(2)
-            matterDensity=-(sqrt2GF/N_A)*Ne        
+            !matterDensity=-(sqrt2GF/N_A)*Ne
+            matterDensity=-(sqrt2GF)*Ne
+
         case default
             print*, nu            
             print*, 'Error: no existe la opcion-matterDensity=0.0'
