@@ -18,7 +18,23 @@ subroutine timeEvolutionOperatorFlavourBase(UfL,L,t12,t23,t13,delta,sm,aM,P,nu,N
 
     double complex :: UmL(3,3)           ! UmL is the time evolution operator matrix in the mass base
     double complex :: U(3,3)      ! U is the mixing matrix of the oscillation model
-    double complex :: U_1(3,3)    ! U is the mixing matrix of the oscillation model    
+    double complex :: U_1(3,3)    ! U is the mixing matrix of the oscillation model
+
+
+    print*, 'timeEvolutionOperatorFlavourBase'
+    print*, 'UfL', UfL(1,:)
+    print*, 'UfL', UfL(2,:)
+    print*, 'UfL', UfL(3,:)
+    print*, 'L', L
+    print*, 't12', t12
+    print*, 't23', t23
+    print*, 't13', t13
+    print*, 'delta', delta
+    print*, 'sm', sm
+    print*, 'aM', aM
+    print*, 'P', P
+    print*, 'nu', nu
+    print*, 'Ne', Ne
 
    call timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
    call mixingMatrix(U,t12,t23,t13,delta)

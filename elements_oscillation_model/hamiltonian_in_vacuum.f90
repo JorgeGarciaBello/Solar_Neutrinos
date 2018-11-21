@@ -13,8 +13,14 @@ subroutine hamiltonianInVacuum(Hv,sm,aM,P)
     double complex :: Hdiff(3,3)  ! Hdiff is the hamiltonian differential 
     double complex :: Hdiag(3,3)  ! Hdiag is the hamiltonian differential 
     
+    print*, 'hamiltonianInVacuum'
     call hamiltonianDiff(Hdiff,sm,aM,P)
-    call hamiltonianDiag(Hdiag)  
+    print*,'Hdiff',Hdiff
+    print*,'sm',sm
+    print*,'aM',aM
+    print*,'P',P
+    call hamiltonianDiag(Hdiag)
+    print*,'Hdiag',Hdiag
 
     Hv = Hdiff + Hdiag
     return

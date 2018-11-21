@@ -19,8 +19,15 @@ subroutine totalHamiltonianMassBase(t_Hm,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     double complex :: Hv(3,3)            ! Hv is the hamiltonian for the propagation of the neutrinos in vacuum
     double complex :: Vm(3,3)            ! Vm is the potential matrix in mass base
 
+    print*, 'totalHamiltoniano'
     call hamiltonianInVacuum(Hv,sm,aM,P)
+    print*,'Hv',Hv(1,:)
+    print*,'Hv',Hv(2,:)
+    print*,'Hv',Hv(3,:)
     call potentialMatrixMassBase(Vm,t12,t23,t13,delta,nu,Ne)
+    print*,'Vm',Vm(1,:)
+    print*,'Vm',Vm(2,:)
+    print*,'Vm',Vm(3,:)
 
     t_Hm=Hv+Vm
     return

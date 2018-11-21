@@ -62,18 +62,19 @@ program solar_neutrino
     t23=PI/4.0d0         ! equiv to 45 degrees
     t13=PI*0.027777778d0 ! equiv to 5 degrees
     delta=0.00000000d0
-    sm=1E-4
-    aM=1E-3
+    sm=1E-4              ! [eV^2]
+    aM=1E-3              ! [eV^2]
     eta=0.2d0
-    rEarth=6378.d0
-    L=2.0d0*eta*rEarth
-    P=10.0d9    
+    rEarth=6378.d0       ! 6378.d0 [Km]
+    L=2.0d0*eta*rEarth   ! [Km]
+    P=10.0d9             ! [GeV]
     nu=1
     Ne=1.0d-15
 
-    call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,   &
-                    solarRadios,logElectronDensity,PP,PEP,HEP,Oxygen15,Nitrogen13,Beryllium7,&
-                    Florine17,Boron8)
+    call boro8SolarOsc(t12,t23,t13,delta,sm,aM,nu)
+    !call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,   &
+    !                solarRadios,logElectronDensity,PP,PEP,HEP,Oxygen15,Nitrogen13,Beryllium7,&
+    !                Florine17,Boron8)
   
     
    end program solar_neutrino

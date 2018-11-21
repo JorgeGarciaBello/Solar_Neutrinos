@@ -17,8 +17,11 @@ subroutine tMatrix(T,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     double complex :: I(3,3)             ! I is the identity matrix
     double complex :: traceHm,trHm! traceHm is the trace of the Hamiltonian-mass
 
+    print*,'tMatrix'
     call totalHamiltonianMassBase(t_Hm,t12,t23,t13,delta,sm,aM,P,nu,Ne)
-    call identityMatrix(I)
+    print*,'t_Hm',t_Hm
+    call identityMatrix(I)    
+
     trHm=traceHm(t12,t23,t13,delta,sm,aM,P,nu,Ne)
 
     T=t_Hm-((trHm/3.0d0)*I)

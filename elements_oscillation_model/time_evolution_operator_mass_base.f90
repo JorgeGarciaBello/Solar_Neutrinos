@@ -23,10 +23,26 @@ subroutine timeEvolutionOperatorMassBase(UmL,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     double complex :: T2(3,3)     ! T2 is the T-matrix squared (3,3)
     double complex :: vectA(3)    ! vectA is the vector of the model
 
-    double complex :: Ls(3)       ! Ls is an array with the values of coefficients lambda        
+    double complex :: Ls(3)       ! Ls is an array with the values of coefficients lambda
+
+    print*,'timeEvolutionOperatorMassBase'
 
     call identityMatrix(I)
+    print*,'I'
+    print*,I(1,:)
+    print*,I(2,:)
+    print*,I(3,:)
     call tMatrix(T,t12,t23,t13,delta,sm,aM,P,nu,Ne)
+    print*,'T',T(1,:)
+    print*,'t12',t12
+    print*,'t23',t23
+    print*,'t13',t13
+    print*,'delta',delta
+    print*,'sm',sm
+    print*,'aM',aM
+    print*,'P',P
+    print*,'nu',nu
+    print*,'Ne',Ne
     call tMatrix2(T2,t12,t23,t13,delta,sm,aM,P,nu,Ne)    
     call vectorA(vectA,L,t12,t23,t13,delta,sm,aM,P,nu,Ne)
     UmL(:,:) =0.0d0
