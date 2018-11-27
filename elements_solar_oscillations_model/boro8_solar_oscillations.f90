@@ -30,7 +30,7 @@ subroutine boro8SolarOsc(t12,t23,t13,delta,sm,aM,nu)
     call readSolarLogElectronDensity(logElectronDensity)
     !print*, 'logElectronDensity'
         
-    ratio=solarRadios(1)*
+    ratio=solarRadios(1)
     print*,'solarRadios' ,solarRadios(1)
     zone=1
     j=2
@@ -44,14 +44,5 @@ subroutine boro8SolarOsc(t12,t23,t13,delta,sm,aM,nu)
     
     call iterativeTimeEvolutionOperator(iterUfL,zone,energy,ratio, &
                                         t12,t23,t13,delta,sm,aM,nu,logElectronDensity)
-    print*, 'iterUfL'
-    print*, iterUfL(1,:)
-    print*, iterUfL(2,:)
-    print*, iterUfL(3,:)
-
-
-    print*, 'iterativeProbabilityAmplitude: ',iterativeProbabilityAmplitude(1,1,ratio,                   &
-                                                                            t12,t23,t13,delta,sm,aM, &
-                                                                            zone,P,nu,Ne,logElectronDensity)
     return
 end subroutine

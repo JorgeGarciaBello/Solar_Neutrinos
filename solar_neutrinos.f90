@@ -71,7 +71,9 @@ program solar_neutrino
     nu=1
     Ne=1.0d-15
 
-    call boro8SolarOsc(t12,t23,t13,delta,sm,aM,nu)
+    call chart1Pee()
+
+    !call boro8SolarOsc(t12,t23,t13,delta,sm,aM,nu)
     !call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,   &
     !                solarRadios,logElectronDensity,PP,PEP,HEP,Oxygen15,Nitrogen13,Beryllium7,&
     !                Florine17,Boron8)

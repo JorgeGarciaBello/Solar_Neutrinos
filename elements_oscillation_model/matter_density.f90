@@ -9,21 +9,18 @@
 real(8) function matterDensity(nu,Ne) ! Units [eV]
     implicit none
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
-    real(8) :: Ne                 ! Ne is the electron density
+    real(8) :: Ne                 ! Ne is the electron density [N_A/cm^{3}]
     real(8), parameter :: sqrt2GF=7.6324D-14! Fermi constant [eV cm^{3}/N_A]
     real(8), parameter :: N_A=6.0221415D23  ! N_A is the Avogadro's number [1/mol]
 
     matterDensity=0.0d0
+    matterDensity=(sqrt2GF)*Ne ! Utilizar para cuando Ne = [N_A/cm^{3}], en el caso la densidad en el Sol dada por John Bahcall
+                               ! los datos vienen dados en  [cm^{-3}/N_A] por lo que hay que multiplicarlos por N_A**2
     select case(nu)
         case(1)
-            matterDensity=(sqrt2GF)*Ne*N_A**2 ! Utilizar para cuando Ne = [cm^(-3)/N_A], como es el caso del la densidad en el Sol
-            !matterDensity=(sqrt2GF/N_A)*Ne  
-            !matterDensity=(sqrt2GF)*Ne
+            matterDensity=matterDensity            
         case(2)
-            matterDensity=-(sqrt2GF)*Ne*N_A**2 ! Utilizar para cuando Ne = [cm^(-3)/N_A], como es el caso del la densidad en el Sol
-            !matterDensity=-(sqrt2GF/N_A)*Ne
-            !matterDensity=-(sqrt2GF)*Ne
-
+            matterDensity=-matterDensity            
         case default
             print*, nu            
             print*, 'Error: no existe la opcion-matterDensity=0.0'
