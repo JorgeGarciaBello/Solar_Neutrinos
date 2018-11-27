@@ -1,6 +1,7 @@
 subroutine chart3Pee()
     implicit none
     real(8), parameter :: PI=3.141592653589793238462643d0
+    real(8), parameter :: N_A=6.0221415D23  ! N_A is the Avogadro's number [1/mol]
     real(8) :: t12,t23,t13,delta
     real(8) :: sm,aM              ! sm,aM are the squared mass difference m=m_21 y M=m_32
     real(8) :: P    
@@ -26,8 +27,8 @@ subroutine chart3Pee()
     rEarth=6378.d0
     L=2.0d0*eta*rEarth
     nu=1
-    Ne1=0.789265983d22
-    Ne2=0.789265983d25
+    Ne1=3.612742147D-50*N_A**2 ![cm^{-3}/N_A] Se debe multiplicar por N_A**2 para obtener las dimensiones deseadas de [N_A/cm^{-3}] !0.789265983d22
+    Ne2=3.612742147D-47*N_A**2 ![cm^{-3}/N_A] Se debe multiplicar por N_A**2 para obtener las dimensiones deseadas de [N_A/cm^{-3}] !0.789265983d22
 
     jump=(Ne2 -Ne1)/(10000.0d0)
     print*,'Chart3Pee'
