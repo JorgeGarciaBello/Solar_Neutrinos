@@ -17,8 +17,23 @@ subroutine potentialMatrixMassBase(Vm,t12,t23,t13,delta,nu,Ne)
     double complex :: Vf(3,3)            ! Vf is the hamiltonian for the propagation of the neutrinos in vacuum
     
     call inverseMixingMatrix(U_1,t12,t23,t13,delta)
+    !print*, ''
+    !print*,'U_1',U_1(1,:)
+    !print*,'U_1',U_1(2,:)
+    !print*,'U_1',U_1(3,:)
+    !print*, ''
     call mixingMatrix(U,t12,t23,t13,delta)
-    call potentialMatrixFlavourBase(Vf,nu,Ne)    
+    !print*, ''
+    !print*,'U',U(1,:)
+    !print*,'U',U(2,:)
+    !print*,'U',U(3,:)
+    !print*, ''
+    call potentialMatrixFlavourBase(Vf,nu,Ne)
+    !print*, ''
+    !print*,'Vf',Vf(1,:)
+    !print*,'Vf',Vf(2,:)
+    !print*,'Vf',Vf(3,:)
+    !print*, ''
     
 
     Vm=matmul( matmul(U_1,Vf),U )

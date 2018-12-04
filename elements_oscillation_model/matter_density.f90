@@ -14,6 +14,7 @@ real(8) function matterDensity(nu,Ne) ! Units [eV]
     real(8), parameter :: N_A=6.0221415D23  ! N_A is the Avogadro's number [1/mol]
 
     matterDensity=0.0d0
+    !print*, 'Ne in matterDensity: ', Ne
     matterDensity=(sqrt2GF)*Ne ! Utilizar para cuando Ne = [N_A/cm^{3}], en el caso la densidad en el Sol dada por John Bahcall
                                ! los datos vienen dados en  [cm^{-3}/N_A] por lo que hay que multiplicarlos por N_A**2
     select case(nu)
