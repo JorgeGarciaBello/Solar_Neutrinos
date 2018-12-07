@@ -6,7 +6,7 @@ subroutine florio17SolarOsc(t12,t23,t13,delta,sm,aM,nu)
     real(8) :: sm,aM              ! sm,aM are the squared mass difference m=m_21 y M=m_32    
     integer :: nu                 ! nu is 1 for neutrinos an 2 for antineutrino
     real(8) :: Florine17(1219)    ! F17_solar_zone is the 8boro created inthe solar zones
-    real(8) :: F17_e_sptrm(829,2) ! Neutrino energy spectrum from Boro-8 [MeV]
+    real(8) :: F17_e_sptrm(500,2) ! Neutrino energy spectrum from Boro-8 [MeV]
     real(8) :: solarRadios(1219)  ! solarRadios is an array with the radii of the different layers of the Sun [1/Solar Rdio]
     real(8) :: logElectronDensity(1219)! Is an array with the Logarithm 
                                        ! (to the base 10) of the electron density in units 
@@ -47,9 +47,10 @@ subroutine florio17SolarOsc(t12,t23,t13,delta,sm,aM,nu)
     ratio=solarRadios(1)*(sunUnity) ![m] (metros)
     !print*,'solarRadios' ,solarRadios(1)
     
-    dimen=shape(F17_e_sptrm); energy_step=dimen(1)
+    dimen=shape(F17_e_sptrm); 
+    energy_step=dimen(1)
     zone_step=size(Florine17)
-    !print*,'zone_step', zone_step    
+    
     open(21,file='elements_solar_oscillations_model/17_florio/17_florine_sun_oscillation_core.dat')
     open(22,file='elements_solar_oscillations_model/17_florio/17_florine_sun_llimit_earth_oscillation_core.dat')
     open(23,file='elements_solar_oscillations_model/17_florio/17_florine_sun_earth_oscillation_core.dat')
@@ -60,26 +61,22 @@ subroutine florio17SolarOsc(t12,t23,t13,delta,sm,aM,nu)
             energy=F17_e_sptrm(j,1)
             if(energy.Gt.0.0d0) then
                 ! Florine17(k)  Neutrinos generados en la zona K
-                ! F17_e_sptrm(j,2)   Neutrinos qgenerados con energía (j.2)            
+                ! F17_e_sptrm(j,2)   Neutrinos qgenerados con energía (j.2)
+                print*,'Florine17(zone)*F17_e_sptrm(j,2)',j,Florine17(zone),F17_e_sptrm(j,2)
                 neuF17=Florine17(zone)*F17_e_sptrm(j,2) ! Neutrinos generados en la zona "zone" y energía "energy-j"
                 call iterativeTimeEvolutionOperator(iterUfL,zone,energy,ratio,t12,t23,t13,delta,sm,aM,nu,logElectronDensity)
                 solarProbability=solarProbabilityOfTransitionAB(iterUfL,flvr1,flvr2)
                 vacuumProbability=probabilityOfTransitionAB(flvr1,flvr2,lengthSunEarth,t12,t23,t13,delta,sm,aM,energy,nu,0.0D0)
-                totalProbability=solarProbability*vacuumProbability
+                totalProbability=solarProbability*vacuumProbability                
                 ! cantidad de neutrinos de la capa solar "zone" y con energía "energy" que sobreviven al salir del sol
-                neuF17AllEnergy=neuF17AllEnergy+neuF17*totalProbability                                             
-                !print*,'neuF17AllEnergy',neuF17AllEnergy
-                !print*, 'solarProbabilityOfTransitionAB: ',solarProbability
-                !print*, 'totalProbability: ',totalProbability
+                neuF17AllEnergy=neuF17AllEnergy+neuF17*totalProbability                
                 write(21,*) energy,solarProbability
                 write(22,*) energy,vacuumProbability
-                write(23,*) energy,totalProbability
-
-                !probabilityOfTransitionAB(flvr1,flvr2,lengthSunEarth,t12,t23,t13,delta,sm,aM,energy,nu,0.0D0)
+                write(23,*) energy,totalProbability                
             endif
         enddo
-        neuF17AllZoneEnergy=neuF17AllZoneEnergy+neuF17AllEnergy
-        print*,'neuF17AllZoneEnergy',neuF17AllZoneEnergy
+        neuF17AllZoneEnergy=neuF17AllZoneEnergy+neuF17AllEnergy        
+        !print*,'neuF17AllZoneEnergy',neuF17AllZoneEnergy        
     enddo
     
     close(21)
