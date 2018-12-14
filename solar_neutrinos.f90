@@ -72,7 +72,10 @@ program solar_neutrino
     Ne=1.0d-15           ! Debe de estár en unidades de [N_A/cm^{-3}], en caso contrario modificar las unidades para que se obtenga [N_A/cm^{-3}].
 
     !call boro8SolarOsc(t12,t23,t13,delta,sm,aM,nu)
-    call florio17SolarOsc(t12,t23,t13,delta,sm,aM,nu)
+    !call florio17SolarOsc(t12,t23,t13,delta,sm,aM,nu)
+    !call nitrogen13SolarOsc(t12,t23,t13,delta,sm,aM,nu)
+    call oxygen15SolarOsc(t12,t23,t13,delta,sm,aM,nu)
+    call ppChainSolarOsc(t12,t23,t13,delta,sm,aM,nu)
     !call readData(B8_e_sptrm,F17_e_sptrm,HEP_e_sptrm,N13_e_sptrm,O15_e_sptrm,PP_e_sptrm,   &
     !                solarRadios,logElectronDensity,PP,PEP,HEP,Oxygen15,Nitrogen13,Beryllium7,&
     !                Florine17,Boron8)
